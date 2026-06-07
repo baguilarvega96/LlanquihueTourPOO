@@ -79,4 +79,3 @@ git clone https://github.com/baguilarvega96/LlanquihueTourPOO.git
 ## 📅 Fecha de entrega
 
 07/06/2026
-```
