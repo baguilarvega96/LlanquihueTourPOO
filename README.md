@@ -1,48 +1,41 @@
-# LlanquihueTourPOO
+# 🧠 Actividad Semana 3 – Desarrollo Orientado a Objetos I
 
-## Descripción del proyecto
+## 👤 Autor del proyecto
 
-Este proyecto corresponde a un prototipo básico desarrollado en Java para la agencia de turismo Llanquihue Tour. Su propósito es representar personas vinculadas a la organización, como clientes y guías turísticos, aplicando principios de programación orientada a objetos.
+- **Nombre completo:** Byron Aguilar
+- **Sección:** 004A
+- **Carrera:** Analista Programador
+- **Sede:** Online
 
-## Estructura del proyecto
+---
 
-El proyecto está organizado en dos paquetes principales:
+## 📘 Descripción general del sistema
 
-- `model`: contiene las clases del dominio del sistema.
-- `app`: contiene la clase principal `Main`, desde donde se ejecuta el programa.
+Este proyecto corresponde a un prototipo básico desarrollado en Java para la agencia de turismo **Llanquihue Tour**.
 
-## Clases implementadas
+El objetivo del sistema es representar personas vinculadas a la organización, como clientes y guías turísticos, aplicando principios de programación orientada a objetos, tales como encapsulamiento, composición, herencia y reutilización de clases.
 
-### Direccion
-Representa la dirección de una persona. Contiene calle, ciudad y región.
+El sistema permite modelar información común de una persona, asociarla a una dirección y diferenciar roles específicos dentro de la agencia.
 
-### Persona
-Clase base que contiene atributos comunes como nombre, RUT, teléfono y dirección.
+---
 
-### Cliente
-Clase que hereda de Persona y agrega información propia de un cliente, como número de cliente y preferencia turística.
+## 📦 Estructura general del proyecto
 
-### GuiaTuristico
-Clase que hereda de Persona y agrega datos específicos del guía, como especialidad y años de experiencia.
+```text
+src/
+├── app/        # Clase principal con el método main
+│   └── Main.java
+│
+└── model/      # Clases del dominio del sistema
+    ├── Persona.java
+    ├── Direccion.java
+    ├── Cliente.java
+    └── GuiaTuristico.java
+```
+---
+Repositorio GitHub
 
-## Principios de POO aplicados
+---
 
-- Encapsulamiento mediante atributos privados.
-- Uso de constructores.
-- Métodos getters y setters.
-- Herencia entre Persona, Cliente y GuiaTuristico.
-- Composición entre Persona y Direccion.
-- Sobrescritura del método `toString()`.
+Fecha de entrega:   📅  07.06.2026
 
-## Instrucciones de ejecución
-
-1. Abrir el proyecto en IntelliJ IDEA.
-2. Verificar que las clases estén dentro de los paquetes `model` y `app`.
-3. Ejecutar la clase `Main`.
-4. Revisar la salida por consola.
-
-## Autor
-
-Nombre del estudiante: Byron Aguilar  
-Asignatura: Desarrollo Orientado a Objetos I  
-Semana: 3
