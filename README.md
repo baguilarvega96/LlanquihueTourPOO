@@ -19,7 +19,7 @@ El sistema permite modelar información común de una persona, asociarla a una d
 
 ---
 
-## 📦 Estructura general del proyecto
+## 🧱 Estructura general del proyecto
 
 ```text
 src/
@@ -33,8 +33,45 @@ src/
     └── GuiaTuristico.java
 ```
 ---
-Repositorio GitHub
 
+## 🧩 Clases implementadas
+
+### Persona
+Clase base del sistema. Contiene atributos comunes como nombre, RUT, teléfono y dirección.
+
+### Direccion
+Clase que representa la dirección de una persona, considerando calle, ciudad y región.
+
+### Cliente
+Clase que hereda de Persona. Agrega atributos propios como número de cliente y preferencia turística.
+
+### GuiaTuristico
+Clase que hereda de Persona. Agrega atributos como especialidad y años de experiencia.
+
+### Main
+Clase principal ubicada en el paquete app. Permite crear objetos y mostrar la información por consola.
+
+---
+
+## 🧱 Principios de programación orientada a objetos aplicados
+
+- Encapsulamiento mediante atributos privados.
+- Uso de constructores.
+- Métodos getters y setters.
+- Herencia entre Persona, Cliente y GuiaTuristico.
+- Composición entre Persona y Direccion.
+- Sobrescritura del método toString().
+- Organización del código en paquetes.
+
+---
+
+## ⚙️ Instrucciones para clonar y ejecutar el proyecto
+
+1. Clona el repositorio desde GitHub:
+
+```bash
+Repositorio GitHub : Git clone https://github.com/baguilarvega96/LlanquihueTourPOO.git
+```
 ---
 
 Fecha de entrega:   📅  07.06.2026
