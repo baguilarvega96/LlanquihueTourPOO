@@ -36,19 +36,19 @@ src/
 
 ## 🧩 Clases implementadas
 
-### Persona
+#### Persona
 Clase base del sistema. Contiene atributos comunes como nombre, RUT, teléfono y dirección.
 
-### Direccion
+#### Direccion
 Clase que representa la dirección de una persona, considerando calle, ciudad y región.
 
-### Cliente
+#### Cliente
 Clase que hereda de Persona. Agrega atributos propios como número de cliente y preferencia turística.
 
-### GuiaTuristico
+#### GuiaTuristico
 Clase que hereda de Persona. Agrega atributos como especialidad y años de experiencia.
 
-### Main
+#### Main
 Clase principal ubicada en el paquete app. Permite crear objetos y mostrar la información por consola.
 
 ---
