@@ -34,9 +34,9 @@ src/
 ```
 ---
 
-## ⚙️ Instrucciones para clonar y ejecutar el proyecto
+## ⚙️ Ejecutar proyecto
 
-1. Clonar el repositorio desde GitHub:
+Clonar el repositorio desde GitHub:
 
 ```bash
 git clone https://github.com/baguilarvega96/LlanquihueTourPOO.git
