@@ -1,48 +1,62 @@
-# 🧠 Actividad Semana 3 – Desarrollo Orientado a Objetos I
+# Llanquihue Tour POO
 
-## 👤 Autor del proyecto
+## Descripción del proyecto
 
-- **Nombre completo:** Byron Aguilar
-- **Sección:** 004A
-- **Carrera:** Analista Programador
-- **Sede:** Online
+Este proyecto corresponde a una actividad formativa de Programación Orientada a Objetos en Java.
 
----
+El sistema permite leer información de tours turísticos desde un archivo de texto llamado `tours.txt`. Cada línea del archivo contiene los datos de un tour separados por punto y coma. Luego, el programa crea objetos de la clase `Tour`, los almacena en un `ArrayList`, muestra todos los tours registrados y filtra los tours de tipo gastronómico.
 
-## 📘 Descripción general del sistema
-
-Este proyecto corresponde a un prototipo básico desarrollado en Java para la agencia de turismo **Llanquihue Tour**.
-
-El objetivo del sistema es representar personas vinculadas a la organización, como clientes y guías turísticos, aplicando principios de programación orientada a objetos, tales como encapsulamiento, composición, herencia y reutilización de clases.
-
-El sistema permite modelar información común de una persona, asociarla a una dirección y diferenciar roles específicos dentro de la agencia.
-
----
-
-## 🧱 Estructura general del proyecto
+## Estructura del proyecto
 
 ```text
-src/
-├── app/        # Clase principal con el método main
-│   └── Main.java
-│
-└── model/      # Clases del dominio del sistema
-    ├── Persona.java
-    ├── Direccion.java
-    ├── Cliente.java
-    └── GuiaTuristico.java
+LlanquihueTourPOO/
+├── resources/
+│   └── tours.txt
+├── src/
+│   ├── data/
+│   │   └── GestorDatos.java
+│   ├── model/
+│   │   └── Tour.java
+│   └── ui/
+│       └── Main.java
+└── README.md
 ```
----
 
-## ⚙️ Ejecutar proyecto
+## Archivo de datos
 
-Clonar el repositorio desde GitHub:
+El archivo `tours.txt` contiene información de tours turísticos con el siguiente formato:
 
-```bash
-git clone https://github.com/baguilarvega96/LlanquihueTourPOO.git
+```text
+nombre;tipo;precio
 ```
----
 
-## 📅 Fecha de entrega
+Ejemplo:
 
-07/06/2026
+```text
+Ruta Gastronomica;gastronomico;25000
+```
+
+## Instrucciones de ejecución
+
+1. Abrir el proyecto en IntelliJ IDEA.
+2. Verificar que el archivo `tours.txt` esté dentro de la carpeta `resources`.
+3. Ejecutar la clase `Main.java`, ubicada en el paquete `ui`.
+4. El programa mostrará todos los tours disponibles y luego filtrará los tours de tipo gastronómico.
+
+## Clase principal
+
+La clase principal que se debe ejecutar es:
+
+```text
+src/ui/Main.java
+```
+
+## Funcionalidades implementadas
+
+* Lectura de datos desde un archivo `.txt`.
+* Separación de datos mediante `.split(";")`.
+* Creación de objetos de la clase `Tour`.
+* Almacenamiento de objetos en un `ArrayList`.
+* Recorrido de la colección.
+* Filtrado de tours según su tipo.
+* Visualización de resultados en consola.

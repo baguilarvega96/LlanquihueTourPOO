@@ -1,0 +1,5 @@
+Ruta Gastronomica;gastronomico;25000
+Paseo Lago Llanquihue;lacustre;30000
+Tour Cultural Frutillar;cultural;20000
+Excursion Volcan Osorno;aventura;40000
+Tour Personalizado Puerto Varas;personalizado;35000
