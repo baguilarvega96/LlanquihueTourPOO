@@ -1,22 +1,17 @@
 package model;
 
+// Clase que representa la dirección de una persona
 public class Direccion {
-    private String calle;
+
     private String ciudad;
     private String region;
 
-    public Direccion(String calle, String ciudad, String region) {
-        this.calle = calle;
-        this.ciudad = ciudad;
-        this.region = region;
+    public Direccion() {
     }
 
-    public String getCalle() {
-        return calle;
-    }
-
-    public void setCalle(String calle) {
-        this.calle = calle;
+    public Direccion(String ciudad, String region) {
+        setCiudad(ciudad);
+        setRegion(region);
     }
 
     public String getCiudad() {
@@ -24,7 +19,11 @@ public class Direccion {
     }
 
     public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+        if (ciudad == null || ciudad.trim().isEmpty()) {
+            this.ciudad = "Sin ciudad";
+        } else {
+            this.ciudad = ciudad;
+        }
     }
 
     public String getRegion() {
@@ -32,11 +31,18 @@ public class Direccion {
     }
 
     public void setRegion(String region) {
-        this.region = region;
+        if (region == null || region.trim().isEmpty()) {
+            this.region = "Sin region";
+        } else {
+            this.region = region;
+        }
     }
 
     @Override
     public String toString() {
-        return "Calle: " + calle + ", Ciudad: " + ciudad + ", Región: " + region;
+        return "Direccion{" +
+                "ciudad='" + ciudad + '\'' +
+                ", region='" + region + '\'' +
+                '}';
     }
 }

@@ -1,14 +1,19 @@
 package model;
 
+// Clase que representa a un guia turistico de la agencia
 public class GuiaTuristico extends Persona {
+
     private String especialidad;
     private int aniosExperiencia;
+
+    public GuiaTuristico() {
+    }
 
     public GuiaTuristico(String nombre, String rut, String telefono, Direccion direccion,
                          String especialidad, int aniosExperiencia) {
         super(nombre, rut, telefono, direccion);
-        this.especialidad = especialidad;
-        this.aniosExperiencia = aniosExperiencia;
+        setEspecialidad(especialidad);
+        setAniosExperiencia(aniosExperiencia);
     }
 
     public String getEspecialidad() {
@@ -16,7 +21,11 @@ public class GuiaTuristico extends Persona {
     }
 
     public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
+        if (especialidad == null || especialidad.trim().isEmpty()) {
+            this.especialidad = "Sin especialidad";
+        } else {
+            this.especialidad = especialidad;
+        }
     }
 
     public int getAniosExperiencia() {
@@ -24,15 +33,22 @@ public class GuiaTuristico extends Persona {
     }
 
     public void setAniosExperiencia(int aniosExperiencia) {
-        this.aniosExperiencia = aniosExperiencia;
+        if (aniosExperiencia < 0) {
+            this.aniosExperiencia = 0;
+        } else {
+            this.aniosExperiencia = aniosExperiencia;
+        }
     }
 
     @Override
     public String toString() {
-        return "Guía Turístico {" +
-                super.toString() +
-                ", Especialidad: " + especialidad +
-                ", Años de Experiencia: " + aniosExperiencia +
-                "}";
+        return "GuiaTuristico{" +
+                "nombre='" + getNombre() + '\'' +
+                ", rut='" + getRut() + '\'' +
+                ", telefono='" + getTelefono() + '\'' +
+                ", direccion=" + getDireccion() +
+                ", especialidad='" + especialidad + '\'' +
+                ", aniosExperiencia=" + aniosExperiencia +
+                '}';
     }
 }

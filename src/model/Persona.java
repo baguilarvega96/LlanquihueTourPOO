@@ -1,16 +1,21 @@
 package model;
 
+// Clase base que representa a una persona vinculada a la agencia
 public class Persona {
+
     private String nombre;
     private String rut;
     private String telefono;
     private Direccion direccion;
 
+    public Persona() {
+    }
+
     public Persona(String nombre, String rut, String telefono, Direccion direccion) {
-        this.nombre = nombre;
-        this.rut = rut;
-        this.telefono = telefono;
-        this.direccion = direccion;
+        setNombre(nombre);
+        setRut(rut);
+        setTelefono(telefono);
+        setDireccion(direccion);
     }
 
     public String getNombre() {
@@ -18,7 +23,11 @@ public class Persona {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre == null || nombre.trim().isEmpty()) {
+            this.nombre = "Sin nombre";
+        } else {
+            this.nombre = nombre;
+        }
     }
 
     public String getRut() {
@@ -26,7 +35,11 @@ public class Persona {
     }
 
     public void setRut(String rut) {
-        this.rut = rut;
+        if (rut == null || rut.trim().isEmpty()) {
+            this.rut = "Sin RUT";
+        } else {
+            this.rut = rut;
+        }
     }
 
     public String getTelefono() {
@@ -34,7 +47,11 @@ public class Persona {
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono;
+        if (telefono == null || telefono.trim().isEmpty()) {
+            this.telefono = "Sin telefono";
+        } else {
+            this.telefono = telefono;
+        }
     }
 
     public Direccion getDireccion() {
@@ -42,14 +59,20 @@ public class Persona {
     }
 
     public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
+        if (direccion == null) {
+            this.direccion = new Direccion("Sin ciudad", "Sin region");
+        } else {
+            this.direccion = direccion;
+        }
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre +
-                ", RUT: " + rut +
-                ", Teléfono: " + telefono +
-                ", Dirección: [" + direccion + "]";
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", rut='" + rut + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", direccion=" + direccion +
+                '}';
     }
 }

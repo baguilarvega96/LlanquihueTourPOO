@@ -1,0 +1,5 @@
+Camila Soto;12345678-9;987654321;Puerto Varas;Los Lagos;gastronomico;5
+Felipe Vargas;23456789-0;912345678;Frutillar;Los Lagos;cultural;3
+Valentina Rojas;34567890-1;923456789;Llanquihue;Los Lagos;lacustre;7
+Matias Torres;45678901-2;934567890;Puerto Montt;Los Lagos;aventura;4
+Daniela Muñoz;56789012-3;945678901;Osorno;Los Lagos;gastronomico;6
