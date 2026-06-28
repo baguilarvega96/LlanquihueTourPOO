@@ -2,161 +2,139 @@
 
 ## Descripción del proyecto
 
-Este proyecto corresponde a una actividad de Programación Orientada a Objetos en Java para la agencia turística Llanquihue Tour.
+Este proyecto corresponde a la actividad de Semana 6 de Desarrollo Orientado a Objetos I.
 
-El sistema permite leer información desde archivos externos de texto, cargar los datos en colecciones dinámicas `ArrayList`, crear objetos a partir de esos datos y mostrar resultados por consola. Además, permite aplicar filtros simples para visualizar tours y guías turísticos según ciertos criterios.
+El objetivo de esta semana es implementar una jerarquía de clases con herencia simple para representar distintos servicios turísticos ofrecidos por la agencia Llanquihue Tour.
 
-El proyecto trabaja con tours turísticos y guías turísticos vinculados a la operación de la agencia.
+El sistema utiliza una superclase llamada `ServicioTuristico`, que contiene atributos comunes como el nombre del servicio y la duración en horas. A partir de esta clase se crean subclases especializadas que representan servicios turísticos específicos, como rutas gastronómicas, paseos lacustres y excursiones culturales.
 
-## Funcionalidades principales
+## Objetivo de la Semana 6
 
-* Lectura de datos desde archivos `.txt`.
-* Separación de datos utilizando `split(";")`.
-* Creación de objetos a partir de los datos leídos.
-* Almacenamiento de objetos en colecciones `ArrayList`.
-* Visualización de todos los tours registrados.
-* Filtro de tours por tipo gastronómico.
-* Visualización de todos los guías turísticos registrados.
-* Filtro de guías turísticos por especialidad.
-* Filtro de guías turísticos por años de experiencia.
-* Uso de paquetes funcionales para organizar el código.
-* Aplicación de Programación Orientada a Objetos.
-* Uso de composición entre clases.
+El objetivo principal es aplicar los conceptos de:
+
+* Herencia simple.
+* Atributos heredados.
+* Uso de `super(...)` en constructores.
+* Sobrescritura del método `toString()`.
+* Organización modular por paquetes.
+* Creación de instancias de prueba.
+* Visualización de resultados por consola.
 
 ## Estructura del proyecto
 
 ```text
 LlanquihueTourPOO/
-├── resources/
-│   ├── tours.txt
-│   └── guias.txt
 ├── src/
-│   ├── app/
-│   │   └── Main.java
 │   ├── data/
-│   │   └── GestorDatos.java
+│   │   └── GestorServicios.java
 │   ├── model/
-│   │   ├── Direccion.java
-│   │   ├── Persona.java
-│   │   ├── GuiaTuristico.java
-│   │   └── Tour.java
-│   ├── service/
-│   │   └── ServicioGuia.java
+│   │   ├── ServicioTuristico.java
+│   │   ├── RutaGastronomica.java
+│   │   ├── PaseoLacustre.java
+│   │   └── ExcursionCultural.java
 │   └── ui/
 │       └── Main.java
 └── README.md
 ```
 
-## Paquetes utilizados
+## Clases creadas
 
-### `model`
+### `ServicioTuristico`
 
-Contiene las clases principales del modelo del sistema.
+Es la superclase del sistema. Contiene los atributos comunes para todos los servicios turísticos:
 
-Clases:
+* `nombre`
+* `duracionHoras`
 
-* `Direccion`: representa la ciudad y región asociada a una persona.
-* `Persona`: clase base para personas vinculadas a la agencia. Contiene nombre, RUT, teléfono y dirección.
-* `GuiaTuristico`: representa a un guía turístico. Hereda de `Persona` y agrega especialidad y años de experiencia.
-* `Tour`: representa un tour turístico con nombre, tipo y precio.
+También incluye constructor, getters, setters y método `toString()`.
 
-### `data`
+### `RutaGastronomica`
 
-Contiene la clase encargada de leer archivos externos.
+Es una subclase de `ServicioTuristico`.
 
-Clase:
+Agrega el atributo específico:
 
-* `GestorDatos`: lee los archivos `tours.txt` y `guias.txt`, separa los datos con `split(";")`, crea objetos y los almacena en colecciones `ArrayList`.
+* `numeroDeParadas`
 
-### `service`
+Utiliza `super(...)` para reutilizar los atributos de la superclase y sobrescribe el método `toString()` para mostrar la información completa.
 
-Contiene clases con operaciones del sistema.
+### `PaseoLacustre`
 
-Clase:
+Es una subclase de `ServicioTuristico`.
 
-* `ServicioGuia`: permite mostrar guías turísticos, filtrar por especialidad y filtrar por años de experiencia.
+Agrega el atributo específico:
 
-### `ui`
+* `tipoEmbarcacion`
 
-Contiene la clase principal de ejecución del sistema.
+Utiliza `super(...)` en su constructor y sobrescribe el método `toString()`.
 
-Clase:
+### `ExcursionCultural`
 
-* `Main`: ejecuta el programa, carga los datos desde los archivos, muestra la información y aplica filtros.
+Es una subclase de `ServicioTuristico`.
 
-### `app`
+Agrega el atributo específico:
 
-Contiene una clase puente para ejecutar el programa desde el paquete principal.
+* `lugarHistorico`
 
-Clase:
+También utiliza `super(...)` en el constructor y sobrescribe el método `toString()`.
 
-* `Main`: redirige la ejecución hacia `ui.Main`.
+### `GestorServicios`
 
-## Archivos de datos
+Clase ubicada en el paquete `data`.
 
-### `tours.txt`
+Su función es crear instancias de prueba de las subclases:
 
-Formato:
+* Dos objetos de `RutaGastronomica`.
+* Dos objetos de `PaseoLacustre`.
+* Dos objetos de `ExcursionCultural`.
 
-```text
-nombre;tipo;precio
-```
+Luego muestra todos los servicios por consola.
 
-Ejemplo:
+### `Main`
 
-```text
-Ruta Gastronomica;gastronomico;25000
-```
+Clase principal ubicada en el paquete `ui`.
 
-### `guias.txt`
-
-Formato:
-
-```text
-nombre;rut;telefono;ciudad;region;especialidad;aniosExperiencia
-```
-
-Ejemplo:
-
-```text
-Camila Soto;12345678-9;987654321;Puerto Varas;Los Lagos;gastronomico;5
-```
+Desde esta clase se ejecuta el programa, se instancia `GestorServicios` y se muestran los servicios turísticos disponibles.
 
 ## Instrucciones de ejecución
 
 1. Abrir el proyecto en IntelliJ IDEA.
-2. Verificar que los archivos `tours.txt` y `guias.txt` estén dentro de la carpeta `resources`.
-3. Ejecutar la clase principal:
-
-```text
-src/app/Main.java
-```
-
-También se puede ejecutar directamente:
+2. Ir a la clase principal:
 
 ```text
 src/ui/Main.java
 ```
 
-4. El programa mostrará por consola:
+3. Ejecutar el método `main`.
+4. El programa mostrará por consola los servicios turísticos creados:
 
-    * Lista completa de tours.
-    * Tours de tipo gastronómico.
-    * Lista completa de guías turísticos.
-    * Guías con especialidad gastronómica.
-    * Guías con 5 o más años de experiencia.
+* Rutas gastronómicas.
+* Paseos lacustres.
+* Excursiones culturales.
+
+## Resultado esperado en consola
+
+```text
+=== AGENCIA LLANQUIHUE TOUR ===
+Demostracion de jerarquia de clases con herencia simple
+
+=== SERVICIOS TURISTICOS DISPONIBLES ===
+RutaGastronomica{...}
+RutaGastronomica{...}
+PaseoLacustre{...}
+PaseoLacustre{...}
+ExcursionCultural{...}
+ExcursionCultural{...}
+```
 
 ## Conceptos aplicados
 
 * Programación Orientada a Objetos.
-* Encapsulamiento.
-* Herencia.
-* Composición.
-* Constructores.
-* Getters y setters.
+* Herencia simple.
+* Superclase.
+* Subclases.
+* Uso de `super(...)`.
+* Sobrescritura de métodos.
 * Método `toString()`.
-* Validaciones básicas.
-* Manejo de excepciones con `try-catch`.
-* Lectura de archivos.
-* Uso de `ArrayList`.
-* Organización modular por paquetes.
+* Organización por paquetes.
+* Ejecución desde una clase principal.
