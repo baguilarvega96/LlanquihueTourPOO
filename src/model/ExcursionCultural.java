@@ -20,7 +20,12 @@ public class ExcursionCultural extends ServicioTuristico {
     public void setLugarHistorico(String lugarHistorico) {
         this.lugarHistorico = lugarHistorico;
     }
-
+    @Override
+    public void mostrarInformacion() {
+        System.out.println("Excursion cultural: " + getNombre() +
+                ", duracion: " + getDuracionHoras() + " horas" +
+                ", lugar historico: " + lugarHistorico);
+    }
     @Override
     public String toString() {
         return "ExcursionCultural{" +

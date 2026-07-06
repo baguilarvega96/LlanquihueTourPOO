@@ -3,55 +3,65 @@ package data;
 import model.ExcursionCultural;
 import model.PaseoLacustre;
 import model.RutaGastronomica;
+import model.ServicioTuristico;
 
-// Clase encargada de crear servicios turísticos de prueba
+import java.util.ArrayList;
+import java.util.List;
+
+// Clase encargada de gestionar servicios turísticos
 public class GestorServicios {
 
-    public void mostrarServicios() {
+    // Metodo que crea una coleccion polimorfica de servicios turisticos
+    public List<ServicioTuristico> obtenerServicios() {
 
-        RutaGastronomica ruta1 = new RutaGastronomica(
+        List<ServicioTuristico> servicios = new ArrayList<>();
+
+        servicios.add(new RutaGastronomica(
                 "Ruta de Sabores del Lago",
                 4,
                 5
-        );
+        ));
 
-        RutaGastronomica ruta2 = new RutaGastronomica(
-                "Experiencia Gastronómica Frutillar",
+        servicios.add(new RutaGastronomica(
+                "Experiencia Gastronomica Frutillar",
                 3,
                 4
-        );
+        ));
 
-        PaseoLacustre paseo1 = new PaseoLacustre(
+        servicios.add(new PaseoLacustre(
                 "Paseo por Lago Llanquihue",
                 2,
-                "Lancha turística"
-        );
+                "Lancha turistica"
+        ));
 
-        PaseoLacustre paseo2 = new PaseoLacustre(
-                "Navegación Puerto Varas",
+        servicios.add(new PaseoLacustre(
+                "Navegacion Puerto Varas",
                 3,
-                "Catamarán"
-        );
+                "Catamaran"
+        ));
 
-        ExcursionCultural excursion1 = new ExcursionCultural(
+        servicios.add(new ExcursionCultural(
                 "Tour Patrimonial Frutillar",
                 3,
                 "Teatro del Lago"
-        );
+        ));
 
-        ExcursionCultural excursion2 = new ExcursionCultural(
-                "Recorrido Histórico Llanquihue",
+        servicios.add(new ExcursionCultural(
+                "Recorrido Historico Llanquihue",
                 2,
                 "Casas patrimoniales"
-        );
+        ));
+
+        return servicios;
+    }
+
+    // Metodo que recorre la coleccion aplicando polimorfismo
+    public void mostrarServicios(List<ServicioTuristico> servicios) {
 
         System.out.println("=== SERVICIOS TURISTICOS DISPONIBLES ===");
 
-        System.out.println(ruta1);
-        System.out.println(ruta2);
-        System.out.println(paseo1);
-        System.out.println(paseo2);
-        System.out.println(excursion1);
-        System.out.println(excursion2);
+        for (ServicioTuristico servicio : servicios) {
+            servicio.mostrarInformacion();
+        }
     }
 }
