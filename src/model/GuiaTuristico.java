@@ -1,7 +1,7 @@
 package model;
 
 // Clase que representa a un guia turistico de la agencia
-public class GuiaTuristico extends Persona {
+public class GuiaTuristico extends Persona implements Registrable {
 
     private String especialidad;
     private int aniosExperiencia;
@@ -39,7 +39,12 @@ public class GuiaTuristico extends Persona {
             this.aniosExperiencia = aniosExperiencia;
         }
     }
-
+    @Override
+    public String mostrarResumen() {
+        return "Guía turístico: " + getNombre()
+                + " | Especialidad: " + especialidad
+                + " | Años de experiencia: " + aniosExperiencia;
+    }
     @Override
     public String toString() {
         return "GuiaTuristico{" +
