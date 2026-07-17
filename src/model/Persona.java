@@ -1,5 +1,7 @@
 package model;
 
+import utils.ValidadorRut;
+
 // Clase base que representa a una persona vinculada a la agencia
 public class Persona {
 
@@ -35,11 +37,11 @@ public class Persona {
     }
 
     public void setRut(String rut) {
-        if (rut == null || rut.trim().isEmpty()) {
-            this.rut = "Sin RUT";
-        } else {
-            this.rut = rut;
-        }
+
+        // Comprueba el formato y el dígito verificador
+        ValidadorRut.validar(rut);
+
+        this.rut = rut;
     }
 
     public String getTelefono() {
