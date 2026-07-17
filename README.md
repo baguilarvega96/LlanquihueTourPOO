@@ -1,170 +1,242 @@
-# Llanquihue Tour POO
+# Llanquihue Tour - Evaluación Final POO
 
 ## Descripción del proyecto
 
-Este proyecto corresponde a la actividad de la Semana 8 de la asignatura Desarrollo Orientado a Objetos I.
+Este proyecto corresponde a la Evaluación Final Transversal de la asignatura Desarrollo Orientado a Objetos I.
 
-El sistema representa el funcionamiento de la agencia turística Llanquihue Tour y permite administrar distintas entidades relacionadas con sus operaciones.
+El sistema representa un prototipo para la agencia turística Llanquihue Tour. Su propósito es organizar información relacionada con guías turísticos, vehículos, colaboradores externos, tours y servicios turísticos.
 
-Durante esta etapa se incorporó la interfaz `Registrable`, implementada por las clases `GuiaTuristico`, `Vehiculo` y `ColaboradorExterno`.
-
-Las entidades se almacenan en una colección genérica de tipo `ArrayList<Registrable>` y son identificadas durante la ejecución mediante el operador `instanceof`.
-
-El sistema también incluye una interfaz gráfica desarrollada mediante `JOptionPane`.
+El proyecto fue desarrollado en Java aplicando programación orientada a objetos, encapsulamiento, composición, herencia, polimorfismo, interfaces, colecciones genéricas, archivos externos y excepciones personalizadas.
 
 ## Funcionalidades
 
-El programa permite:
+El sistema permite:
 
 - Registrar guías turísticos.
 - Registrar vehículos.
 - Registrar colaboradores externos.
-- Almacenar distintos tipos de objetos en una colección común.
-- Identificar los objetos mediante `instanceof`.
-- Mostrar información mediante el método `mostrarResumen()`.
-- Visualizar las entidades mediante una interfaz gráfica.
-- Mantener las funcionalidades desarrolladas en las semanas anteriores.
+- Mostrar todas las entidades registradas.
+- Cargar guías turísticos desde un archivo de texto.
+- Cargar tours desde un archivo de texto.
+- Buscar un guía turístico mediante su RUT.
+- Filtrar guías según su especialidad.
+- Validar el formato y dígito verificador del RUT.
+- Mostrar distintos tipos de entidades mediante una colección polimórfica.
+- Identificar objetos utilizando el operador `instanceof`.
+- Utilizar una interfaz gráfica mediante `JOptionPane`.
 
-## Interfaz utilizada
+## Organización del proyecto
 
-### Registrable
+El proyecto se encuentra organizado en los siguientes paquetes:
 
-La interfaz `Registrable` define el siguiente método:
-
-`String mostrarResumen();`
-
-Las clases que implementan esta interfaz son:
-
-- `GuiaTuristico`
-- `Vehiculo`
-- `ColaboradorExterno`
-
-## Herencia
-
-El proyecto utiliza la superclase `Persona`.
-
-Las siguientes clases heredan de `Persona`:
-
-- `Cliente`
-- `GuiaTuristico`
-- `ColaboradorExterno`
-
-El proyecto también utiliza la superclase `ServicioTuristico`.
-
-Las siguientes clases heredan de `ServicioTuristico`:
-
-- `RutaGastronomica`
-- `PaseoLacustre`
-- `ExcursionCultural`
-
-## Colección de entidades
-
-La clase `GestorEntidades` utiliza una colección:
-
-`ArrayList<Registrable>`
-
-Esta colección permite almacenar objetos pertenecientes a diferentes clases que implementan la interfaz `Registrable`.
-
-La colección se recorre mediante un ciclo `for-each`.
-
-## Uso de instanceof
-
-El operador `instanceof` permite identificar el tipo específico de cada objeto almacenado.
-
-El sistema diferencia entre:
-
-- `GuiaTuristico`
-- `Vehiculo`
-- `ColaboradorExterno`
-
-Luego aplica una lógica específica según el tipo de entidad detectada.
-
-## Interfaz gráfica
-
-La interfaz gráfica fue desarrollada utilizando `JOptionPane`.
-
-El menú permite:
-
-1. Registrar un guía turístico.
-2. Registrar un vehículo.
-3. Registrar un colaborador externo.
-4. Mostrar las entidades registradas.
-0. Salir del programa.
+- `app`: contiene una clase puente para ejecutar la aplicación.
+- `data`: contiene las clases encargadas de administrar colecciones y leer archivos.
+- `exception`: contiene la excepción personalizada para RUT inválido.
+- `model`: contiene las clases que representan las entidades del sistema.
+- `service`: contiene operaciones de búsqueda y filtrado.
+- `ui`: contiene la clase principal y la interfaz gráfica.
+- `utils`: contiene la clase utilitaria encargada de validar el RUT.
+- `resources`: contiene los archivos de datos externos.
 
 ## Clases principales
 
-### Registrable
+### Persona
 
-Interfaz que define el método común `mostrarResumen()`.
+Superclase que contiene los datos comunes de las personas relacionadas con la agencia:
+
+- Nombre.
+- RUT.
+- Teléfono.
+- Dirección.
+
+Las clases `Cliente`, `GuiaTuristico` y `ColaboradorExterno` heredan de `Persona`.
+
+### Direccion
+
+Representa la ciudad y región de una persona.
+
+La relación entre `Persona` y `Direccion` demuestra el principio de composición, porque una persona contiene un objeto de tipo `Direccion`.
 
 ### GuiaTuristico
 
-Representa a un guía de la agencia y almacena datos como nombre, especialidad y años de experiencia.
+Representa a un guía de la agencia. Contiene su especialidad y años de experiencia.
 
-### Vehiculo
+Hereda de `Persona` e implementa la interfaz `Registrable`.
 
-Representa un vehículo utilizado por la agencia y almacena patente, marca, modelo y capacidad de pasajeros.
+### Cliente
+
+Representa a un cliente de la agencia.
+
+Hereda de `Persona` y contiene su número de cliente y preferencia turística.
 
 ### ColaboradorExterno
 
 Representa a una persona o empresa externa que presta servicios a la agencia.
 
+Hereda de `Persona` e implementa la interfaz `Registrable`.
+
+### Vehiculo
+
+Representa un vehículo utilizado por la agencia.
+
+Contiene patente, marca, modelo y capacidad de pasajeros. También implementa la interfaz `Registrable`.
+
+### ServicioTuristico
+
+Superclase que representa un servicio turístico general.
+
+Las clases `RutaGastronomica`, `PaseoLacustre` y `ExcursionCultural` heredan de esta clase y sobrescriben el método `mostrarInformacion()`.
+
+### Tour
+
+Representa un tour cargado desde el archivo `tours.txt`.
+
+Contiene nombre, tipo y precio.
+
+### Registrable
+
+Interfaz que define el método común:
+
+`String mostrarResumen();`
+
+Es implementada por:
+
+- `GuiaTuristico`.
+- `Vehiculo`.
+- `ColaboradorExterno`.
+
 ### GestorEntidades
 
-Administra la colección `ArrayList<Registrable>`, agrega entidades y utiliza `instanceof` para diferenciarlas.
+Administra una colección de tipo:
+
+`ArrayList<Registrable>`
+
+Esta colección permite almacenar objetos de diferentes clases mediante una interfaz común.
+
+La clase utiliza `instanceof` para identificar el tipo real de cada objeto.
+
+### GestorDatos
+
+Lee los archivos externos:
+
+- `resources/guias.txt`
+- `resources/tours.txt`
+
+Convierte cada línea de los archivos en objetos Java y los almacena en colecciones `ArrayList`.
 
 ### GestorServicios
 
-Administra la colección de servicios turísticos desarrollada durante la Semana 7.
+Crea y recorre una colección polimórfica de tipo:
 
-### Main
+`List<ServicioTuristico>`
 
-Clase ubicada en el paquete `ui`. Ejecuta el sistema, muestra los servicios anteriores e inicia la interfaz gráfica.
+La ejecución de `mostrarInformacion()` depende de la subclase correspondiente.
 
-## Organización del proyecto
+### ValidadorRut
 
-- `app`: contiene una clase principal desarrollada en etapas anteriores.
-- `data`: contiene `GestorDatos`, `GestorServicios` y `GestorEntidades`.
-- `model`: contiene las clases, superclases e interfaz del sistema.
-- `service`: contiene los servicios utilizados por la aplicación.
-- `ui`: contiene la clase principal y la interfaz gráfica.
-- `resources`: contiene los archivos de datos utilizados por el programa.
+Clase utilitaria que valida:
+
+- Campos vacíos.
+- Formato del RUT.
+- Cantidad de dígitos.
+- Dígito verificador.
+
+### RutInvalidoException
+
+Excepción personalizada que se genera cuando el RUT ingresado no es válido.
+
+El programa captura esta excepción y muestra el mensaje correspondiente sin cerrar la aplicación.
+
+## Principios de programación orientada a objetos
+
+### Encapsulamiento
+
+Los atributos de las clases se encuentran declarados como `private` y se accede a ellos mediante getters y setters públicos.
+
+### Composición
+
+La clase `Persona` contiene un objeto de tipo `Direccion`.
+
+### Herencia
+
+Se aplican las siguientes jerarquías:
+
+- `Persona` → `Cliente`
+- `Persona` → `GuiaTuristico`
+- `Persona` → `ColaboradorExterno`
+- `ServicioTuristico` → `RutaGastronomica`
+- `ServicioTuristico` → `PaseoLacustre`
+- `ServicioTuristico` → `ExcursionCultural`
+
+### Polimorfismo
+
+Las subclases de `ServicioTuristico` sobrescriben el método `mostrarInformacion()`.
+
+También se utiliza una colección `ArrayList<Registrable>` para almacenar diferentes tipos de entidades.
+
+### Sobrescritura
+
+Se utiliza la anotación `@Override` en los métodos sobrescritos por las subclases y en los métodos definidos por la interfaz.
+
+## Colecciones y archivos
+
+El proyecto utiliza:
+
+- `ArrayList<GuiaTuristico>`
+- `ArrayList<Tour>`
+- `ArrayList<Registrable>`
+- `List<ServicioTuristico>`
+
+Los archivos externos utilizan el carácter punto y coma como separador.
+
+Ejemplo de un guía:
+
+`Camila Soto;12345678-5;987654321;Puerto Varas;Los Lagos;gastronomico;5`
+
+Ejemplo de un tour:
+
+`Ruta Gastronomica;gastronomico;25000`
+
+## Instrucciones para clonar el proyecto
+
+Ejecutar el siguiente comando:
+
+`git clone https://github.com/baguilarvega96/llanquihue-tour.git`
+
+Después, abrir la carpeta descargada utilizando IntelliJ IDEA.
 
 ## Instrucciones de ejecución
 
-1. Descargar o clonar el repositorio.
-2. Abrir el proyecto utilizando IntelliJ IDEA.
-3. Esperar a que IntelliJ cargue el proyecto.
-4. Abrir el archivo:
+1. Abrir el proyecto en IntelliJ IDEA.
+2. Verificar que exista un JDK configurado.
+3. Abrir el archivo `src/ui/Main.java`.
+4. Ejecutar el método `public static void main(String[] args)`.
+5. Utilizar el menú gráfico para probar las funcionalidades.
 
-`src/ui/Main.java`
+El programa debe ejecutarse desde la carpeta principal del proyecto para encontrar correctamente los archivos ubicados en `resources`.
 
-5. Ejecutar el método:
+## Opciones del menú
 
-`public static void main(String[] args)`
+1. Registrar guía turístico.
+2. Registrar vehículo.
+3. Registrar colaborador externo.
+4. Mostrar todas las entidades.
+5. Mostrar guías cargados desde archivo.
+6. Mostrar tours cargados desde archivo.
+7. Buscar guía por RUT.
+8. Filtrar guías por especialidad.
+0. Salir.
 
-6. Utilizar el menú gráfico para registrar y visualizar las entidades.
+## Tecnologías utilizadas
 
-## Conceptos aplicados
-
-- Programación Orientada a Objetos.
-- Interfaces.
-- Herencia.
-- Polimorfismo.
-- Sobrescritura de métodos.
-- Uso de `@Override`.
-- Encapsulamiento.
-- Colecciones genéricas.
-- Uso de `List`.
-- Uso de `ArrayList`.
-- Ciclo `for-each`.
-- Operador `instanceof`.
-- Validación de datos.
-- Interfaz gráfica mediante `JOptionPane`.
-- Organización mediante paquetes.
+- Java.
+- IntelliJ IDEA.
+- Java Swing mediante `JOptionPane`.
+- Git.
+- GitHub.
+- Archivos de texto `.txt`.
 
 ## Autor
 
-Byron Aguilar
-
+Byron Aguilar  
 Estudiante de Analista Programador.
